@@ -64,13 +64,14 @@ function process_touchstart(event) {
 	imMouseX = event.touches[0].clientX;
 	imMouseY = event.touches[0].clientY;
 	mousedown = true;
-	switch (ev.touches.length) {
-    case 1: handle_one_touch(ev); break;
-    case 2: handle_two_touches(ev); break;
+	switch (event.touches.length) {
+    case 1: handle_one_touch(event); break;
+    case 2: handle_two_touches(event); break;
     default: break;
   }
 }
 function handle_one_touch(event) {
+	console.log("one!")
 	event.preventDefault();
 	deltaX = 0;
 	deltaY = 0;
@@ -79,21 +80,23 @@ function handle_one_touch(event) {
 	mousedown = true;
 }
 function handle_two_touches(event) {
+	console.log("two!")
 	event.preventDefault();
 	deltaX = 0;
 	deltaY = 0;
-	imMouseX = event.clientX;
-	imMouseY = event.clientY;
+	imMouseX = event.touches[0].clientX;
+	imMouseY = event.touches[0].clientY;
 	middlemousedown = true;
 }
 // touchmove handler
 function process_touchmove(event) {
+	console.log("move!")
 	event.preventDefault();
 	if (mousedown || middlemousedown) {
-		deltaX = imMouseX - event.clientX;
-		deltaY = imMouseY - event.clientY;
-		imMouseX = event.clientX;
-		imMouseY = event.clientY;
+		deltaX = imMouseX - event.touches[0].clientX;
+		deltaY = imMouseY - event.touches[0].clientY;
+		imMouseX = event.touches[0].clientX;
+		imMouseY = event.touches[0].clientY;
 		if (!middlemousedown && !mandel) {
 			juliaMouseX += deltaX * zoomSize;
 			juliaMouseY += deltaY * zoomSize;
