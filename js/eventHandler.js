@@ -46,7 +46,7 @@ canvas.addEventListener('mousemove', (event) => {
 	}
 });
 canvas.addEventListener('mouseup', (event) => {
-    if (event && (event.which == 2 || event.button == 4 )) {
+   if (event && (event.which == 2 || event.button == 4 )) {
 		middlemousedown = false;
 	} else {
 		mousedown = false;
@@ -71,7 +71,6 @@ function process_touchstart(event) {
   }
 }
 function handle_one_touch(event) {
-	console.log("one!")
 	event.preventDefault();
 	deltaX = 0;
 	deltaY = 0;
@@ -80,7 +79,6 @@ function handle_one_touch(event) {
 	mousedown = true;
 }
 function handle_two_touches(event) {
-	console.log("two!")
 	event.preventDefault();
 	deltaX = 0;
 	deltaY = 0;
@@ -108,7 +106,8 @@ function process_touchmove(event) {
 }
 function process_touchend(event) {
 	event.preventDefault();
-	mousedown = false;
+		middlemousedown = false;
+		mousedown = false;
 }
 
 window.addEventListener("resize", () => {
