@@ -85,8 +85,6 @@ function getRandomArb(min, max) {
 
 var maxIt = 256;
 
-
-
 var width = window.innerWidth;
 var height = window.innerHeight;
 
@@ -104,6 +102,14 @@ let targetZoomCenter = [0, 0],
 	deltaX = mouseX,
 	deltaY = mouseY,
 	offsetX = 0,
-	offsetY = 0;
-
-var mandel = true;
+	offsetY = 0,
+	red = 1,
+	green = 1,
+	blue = 1,
+	mandel = true,
+	mousedown = false,
+	middlemousedown = false,
+	pinch = false,
+	pinchDist = 1,
+	touch1,
+	touch2;

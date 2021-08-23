@@ -7,7 +7,10 @@ const render = gpu.createKernel(function(
 		offsetY, 
 		maxIt, 
 		a, 
-		b
+		b,
+		red,
+		green,
+		blue
 	) {
 	let x = [0,0];
 	let c = [
@@ -45,14 +48,12 @@ const render = gpu.createKernel(function(
     	let pix = itCount*10/maxIt;
     	pix = Math.sqrt(pix);
 
-    	this.color(pix, pix, pix, 1);
+    	this.color(pix * red, pix * green, pix * blue, 1);
     }
 })
   .setOutput([width,height])
   .setGraphical(true);
 const canvas = render.canvas;
-
-var mandel = true;
 
 document.querySelector(".container").appendChild(canvas);
 
@@ -68,7 +69,19 @@ function animate() {
 	zoomCenter[0] = + offsetX;
   	zoomCenter[1] = - offsetY;
 
-	render(mandel, zoomCenter, zoomSize, offsetX, offsetY, maxIt, a, b);
+	render(
+		mandel, 
+		zoomCenter, 
+		zoomSize, 
+		offsetX, 
+		offsetY, 
+		maxIt, 
+		a, 
+		b, 
+		red, 
+		green, 
+		blue
+	);
 }
 
 animate();

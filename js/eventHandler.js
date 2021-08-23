@@ -1,17 +1,26 @@
 var hideShow = document.querySelector("#hideShow");
 var menu = document.querySelector(".menu");
 var itSlider = document.querySelector("#itSlider");
-var lockCheck = document.querySelector("#lock");
+var rSlider = document.querySelector("#rSlider");
+var gSlider = document.querySelector("#gSlider");
+var bSlider = document.querySelector("#bSlider");
 var btnM = document.querySelector("#selectM");
 var btnJ = document.querySelector("#selectJ");
 
-var mousedown = false;
-var middlemousedown = false;
-var pinch = false;
-var pinchDist = 1;
-var touch1;
-var touch2;
-
+window.addEventListener('keydown', (event) => {
+	console.log(event);
+	if (event.code == 'ArrowRight') {
+		if(maxIt < 2048){
+			maxIt += 10;
+		}
+		itSlider.value = maxIt;
+	} else {
+		if(maxIt > 11){
+			maxIt -= 10;
+		}
+		itSlider.value = maxIt;
+	}
+});
 window.addEventListener('wheel', (event) => {
 	zoomSize += zoomSize * (event.deltaY/1000);
 	console.log(zoomSize)
@@ -29,6 +38,17 @@ hideShow.addEventListener('click', (event) => {
 itSlider.addEventListener('input', () => {
 	maxIt = Math.floor(itSlider.value);
 });
+
+rSlider.addEventListener('input', () => {
+	red = rSlider.value / 255;
+});
+gSlider.addEventListener('input', () => {
+	green = gSlider.value / 255;
+});
+bSlider.addEventListener('input', () => {
+	blue = bSlider.value / 255;
+});
+
 btnM.addEventListener('click', () => {
 	mandel = true;
 	btnM.setAttribute('disabled', '');
