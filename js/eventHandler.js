@@ -121,6 +121,7 @@ function process_touchmove(event) {
 			juliaMouseY += deltaY * zoomSize;
 		} else if(pinch){
 			touch1.x = event.touches[0].clientX;
+			touch1.x = event.touches[1].clienty;
 			zoomSize = (pinchDist - (touch1.dist(touch2)/100));
 		} else {
 			mouseX += deltaX * zoomSize;

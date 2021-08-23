@@ -85,24 +85,25 @@ function getRandomArb(min, max) {
 
 var maxIt = 256;
 
-let targetZoomCenter = [0, 0],
-		zoomFactor = 0.1,
-    zoomCenter = [0, 0],
-    zoomSize = 3,
-    maxIterations = 1;
+
 
 var width = window.innerWidth;
 var height = window.innerHeight;
 
-var mouseX = width/2;
-var mouseY = height/2;
-var imMouseX = width/2;
-var imMouseY = height/2;
-var juliaMouseX = width/2;
-var juliaMouseY = height/2;
-var deltaX = mouseX;
-var deltaY = mouseY;
-var offsetX = 0;
-var offsetY = 0;
+let targetZoomCenter = [0, 0],
+	zoomFactor = 0.1,
+    zoomCenter = [0, 0],
+    zoomSize = 2.5 * width/height,
+    maxIterations = 1,
+	mouseX = width/2,
+	mouseY = height/2,
+	imMouseX = width/2,
+	imMouseY = height/2,
+	juliaMouseX = width/2,
+	juliaMouseY = height/2,
+	deltaX = mouseX,
+	deltaY = mouseY,
+	offsetX = 0,
+	offsetY = 0;
 
 var mandel = true;
