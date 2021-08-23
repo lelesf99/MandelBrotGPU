@@ -8,7 +8,7 @@ const render = gpu.createKernel(function(mandel, zoomCenter, zoomSize, offsetX, 
 	];
 	if (!mandel) {
 		x = [
-			zoomCenter[0] + (((this.thread.x / this.output.x) * 2 - 1) * (zoomSize)) + (offsetX * zoomSize * zoomSize),
+			zoomCenter[0] + (((this.thread.x / this.output.x) * 2 - 1) * (zoomSize)) + (offsetX),
 			zoomCenter[1] + (((this.thread.y / this.output.y) * 2 - 1) * (this.output.y / this.output.x) * (zoomSize)) - (offsetY)
 		];
 		c = [
