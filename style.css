@@ -14,30 +14,33 @@ canvas{
 	z-index: 0;
 }
 #hideShow{
-  position: relative;
+  position: absolute;
   text-decoration: none;
-  top: -100px;
+  top: 20px;
+  left: 20px;
   font-size: 16pt;
 	font-weight: 300;
 	color: #EEE;
 	text-shadow: 2px 2px 2px black;
+  z-index: 10;
+}
+.menu.show{
+	height: 135px;
 }
 .menu{
 	position: absolute;
   display: flex;
   flex-wrap: wrap;
-  top: 80%;
+  height: 0px;
+  top: 1%;
 	z-index: 10;
 	margin: 0 100px 0 100px;
-	padding: 25px;
+	padding: 0 25px;
 	width: calc(100% - 200px);
-	overflow: visible;
+	overflow: hidden;
 	cursor: default;
 	border-radius: 5px;
-  transition: all 0.2s;
-}
-.menu.hide{
-	top: 100%;
+  transition: all 0.5s;
 }
 .menu label{
 	font-size: 16pt;

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="Cache-control" content="no-cache">
 	<title>Mandelbrot</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,9 +11,8 @@
 </head>
 <body>
 	<div class="container">
-		
-		<div class="menu hide">
-			<a id="hideShow" href="#">Menu ↑</a>
+		<a id="hideShow" href="#">Menu ↑</a>
+		<div class="menu show">
 			<label>Iteration Count</label><br>
 			<input id="itSlider" class="mySlider" type="range" min="10" max="2048" value="256"><br>
 			<button id="selectM" type="button" name="set" value="Mandelbrot" disabled>Mandelbrot Set</button>

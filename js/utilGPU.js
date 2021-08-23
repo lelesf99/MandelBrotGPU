@@ -88,7 +88,7 @@ var maxIt = 256;
 let targetZoomCenter = [0, 0],
 		zoomFactor = 0.1,
     zoomCenter = [0, 0],
-    zoomSize = 1,
+    zoomSize = 3,
     maxIterations = 1;
 
 var width = window.innerWidth;

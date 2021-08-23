@@ -1,4 +1,5 @@
 var hideShow = document.querySelector("#hideShow");
+var menu = document.querySelector(".menu");
 var itSlider = document.querySelector("#itSlider");
 var lockCheck = document.querySelector("#lock");
 var btnM = document.querySelector("#selectM");
@@ -15,16 +16,13 @@ window.addEventListener('wheel', (event) => {
 	zoomSize += zoomSize * (event.deltaY/1000);
 	console.log(zoomSize)
 });
-
-
 hideShow.addEventListener('click', (event) => {
 	event.preventDefault();
-	let menu = document.querySelector(".menu");
-	if(menu.classList.contains('hide')) {
-		menu.classList.remove('hide');
+	if(menu.classList.contains('show')) {
+		menu.classList.remove('show');
 		hideShow.innerHTML = 'Menu ↓'
 	} else {
-		menu.classList.add('hide');
+		menu.classList.add('show');
 		hideShow.innerHTML = 'Menu ↑'
 	}
 });
