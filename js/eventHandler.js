@@ -1,23 +1,32 @@
 var itSlider = document.querySelector("#itSlider");
 var lockCheck = document.querySelector("#lock");
-var radio1 = document.querySelector("#selectM");
-var radio2 = document.querySelector("#selectJ");
+var btnM = document.querySelector("#selectM");
+var btnJ = document.querySelector("#selectJ");
 
 var mousedown = false;
 var middlemousedown = false;
+var pinch = false;
+var pinchDist = 1;
+var touch1;
+var touch2;
 
 window.addEventListener('wheel', (event) => {
 	zoomSize += zoomSize * (event.deltaY/1000);
+	console.log(zoomSize)
 });
 
 itSlider.addEventListener('input', () => {
 	maxIt = Math.floor(itSlider.value);
 });
-radio1.addEventListener('input', () => {
+btnM.addEventListener('click', () => {
 	mandel = true;
+	btnM.setAttribute('disabled', '');
+	btnJ.removeAttribute('disabled');
 });
-radio2.addEventListener('input', () => {
+btnJ.addEventListener('click', () => {
 	mandel = false;
+	btnJ.setAttribute('disabled', '');
+	btnM.removeAttribute('disabled');
 });
 canvas.addEventListener('mousedown', (event) => {
 	deltaX = 0;
@@ -79,12 +88,13 @@ function handle_one_touch(event) {
 	mousedown = true;
 }
 function handle_two_touches(event) {
+	
 	event.preventDefault();
-	deltaX = 0;
-	deltaY = 0;
-	imMouseX = event.touches[0].clientX;
-	imMouseY = event.touches[0].clientY;
-	middlemousedown = true;
+	touch1 = new Vector2(event.touches[0].clientX,event.touches[0].clientY);
+	touch2 = new Vector2(event.touches[1].clientX,event.touches[1].clientY);
+	pinchDist = zoomSize + (touch1.dist(touch2)/100);
+	console.log('two');
+	pinch = true;
 }
 // touchmove handler
 function process_touchmove(event) {
@@ -94,19 +104,25 @@ function process_touchmove(event) {
 		deltaY = imMouseY - event.touches[0].clientY;
 		imMouseX = event.touches[0].clientX;
 		imMouseY = event.touches[0].clientY;
-		if (!middlemousedown && !mandel) {
+		
+		if (!middlemousedown && !mandel && !pinch) {
 			juliaMouseX += deltaX * zoomSize;
 			juliaMouseY += deltaY * zoomSize;
+		} else if(pinch){
+			touch1.x = event.touches[0].clientX;
+			zoomSize = (pinchDist - (touch1.dist(touch2)/100));
 		} else {
 			mouseX += deltaX * zoomSize;
 			mouseY += deltaY * zoomSize;
 		}
+		console.log(zoomSize);
 	}
 }
 function process_touchend(event) {
 	event.preventDefault();
 		middlemousedown = false;
 		mousedown = false;
+		picnh = false;
 }
 
 window.addEventListener("resize", () => {

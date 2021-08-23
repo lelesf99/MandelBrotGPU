@@ -1,6 +1,14 @@
 const gpu = new GPU();
-const render = gpu.createKernel(function(mandel, zoomCenter, zoomSize, offsetX, offsetY, maxIt, a, b) {
-
+const render = gpu.createKernel(function(
+		mandel, 
+		zoomCenter, 
+		zoomSize, 
+		offsetX, 
+		offsetY, 
+		maxIt, 
+		a, 
+		b
+	) {
 	let x = [0,0];
 	let c = [
 		zoomCenter[0] + ((this.thread.x / this.output.x) * 2 - 1) * (zoomSize) + (offsetX) ,
