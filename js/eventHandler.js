@@ -3,8 +3,6 @@ var lockCheck = document.querySelector("#lock");
 var radio1 = document.querySelector("#selectM");
 var radio2 = document.querySelector("#selectJ");
 
-const download = document.getElementById('download');
-
 var mousedown = false;
 var middlemousedown = false;
 
@@ -55,14 +53,6 @@ canvas.addEventListener('mouseup', (event) => {
 	} else {
 		mousedown = false;
 	}
-});
-
-download.addEventListener('click', function(e) {
-  const link = document.createElement('a');
-  link.download = 'download.png';
-  link.href = document.querySelector("canvas").toDataURL();
-  link.click();
-  link.delete;
 });
 
 window.addEventListener("resize", () => {
