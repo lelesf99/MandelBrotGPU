@@ -127,7 +127,6 @@ function process_touchmove(event) {
 			mouseX += deltaX * zoomSize;
 			mouseY += deltaY * zoomSize;
 		}
-		console.log(zoomSize);
 	}
 }
 function process_touchend(event) {

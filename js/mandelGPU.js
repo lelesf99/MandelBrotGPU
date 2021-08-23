@@ -55,6 +55,7 @@ const canvas = render.canvas;
 var mandel = true;
 
 document.querySelector(".container").appendChild(canvas);
+
 function animate() {
 	requestAnimationFrame(animate);
 
@@ -65,8 +66,9 @@ function animate() {
 	offsetY = map(mouseY, 0, height, -0.5, 0.5);
 
 	zoomCenter[0] = + offsetX;
-  zoomCenter[1] = - offsetY;
+  	zoomCenter[1] = - offsetY;
 
 	render(mandel, zoomCenter, zoomSize, offsetX, offsetY, maxIt, a, b);
 }
+
 animate();
