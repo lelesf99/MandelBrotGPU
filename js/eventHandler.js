@@ -26,11 +26,9 @@ canvas.addEventListener('mousedown', (event) => {
 	imMouseY = event.clientY;
 	if (event && (event.which == 2 || event.button == 4 )) {
 		middlemousedown = true;
-		zoomFactor = 1;
 	} else {
 		mousedown = true;
 	}
-	
 });
 canvas.addEventListener('mousemove', (event) => {
 	if (mousedown || middlemousedown) {
@@ -39,11 +37,11 @@ canvas.addEventListener('mousemove', (event) => {
 		imMouseX = event.clientX;
 		imMouseY = event.clientY;
 		if (!middlemousedown && !mandel) {
-			juliaMouseX += deltaX ;
-			juliaMouseY += deltaY ;
+			juliaMouseX += deltaX * zoomSize;
+			juliaMouseY += deltaY * zoomSize;
 		} else {
-			mouseX += deltaX ;
-			mouseY += deltaY ;
+			mouseX += deltaX * zoomSize;
+			mouseY += deltaY * zoomSize;
 		}
 	}
 });
@@ -54,6 +52,61 @@ canvas.addEventListener('mouseup', (event) => {
 		mousedown = false;
 	}
 });
+
+canvas.addEventListener('touchstart', process_touchstart, false);
+canvas.addEventListener('touchmove', process_touchmove, false);
+canvas.addEventListener('touchend', process_touchend, false);
+
+function process_touchstart(event) {
+	event.preventDefault();
+	deltaX = 0;
+	deltaY = 0;
+	imMouseX = event.touches[0].clientX;
+	imMouseY = event.touches[0].clientY;
+	mousedown = true;
+	switch (ev.touches.length) {
+    case 1: handle_one_touch(ev); break;
+    case 2: handle_two_touches(ev); break;
+    default: break;
+  }
+}
+function handle_one_touch(event) {
+	event.preventDefault();
+	deltaX = 0;
+	deltaY = 0;
+	imMouseX = event.touches[0].clientX;
+	imMouseY = event.touches[0].clientY;
+	mousedown = true;
+}
+function handle_two_touches(event) {
+	event.preventDefault();
+	deltaX = 0;
+	deltaY = 0;
+	imMouseX = event.clientX;
+	imMouseY = event.clientY;
+	middlemousedown = true;
+}
+// touchmove handler
+function process_touchmove(event) {
+	event.preventDefault();
+	if (mousedown || middlemousedown) {
+		deltaX = imMouseX - event.clientX;
+		deltaY = imMouseY - event.clientY;
+		imMouseX = event.clientX;
+		imMouseY = event.clientY;
+		if (!middlemousedown && !mandel) {
+			juliaMouseX += deltaX * zoomSize;
+			juliaMouseY += deltaY * zoomSize;
+		} else {
+			mouseX += deltaX * zoomSize;
+			mouseY += deltaY * zoomSize;
+		}
+	}
+}
+function process_touchend(event) {
+	event.preventDefault();
+	mousedown = false;
+}
 
 window.addEventListener("resize", () => {
 	canvas.setAttribute('width', window.innerWidth);
