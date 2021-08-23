@@ -83,9 +83,7 @@ function getRandomArb(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-canvas = document.querySelector(".container");
-
-var maxIt = 100;
+var maxIt = 256;
 
 let targetZoomCenter = [0, 0],
 		zoomFactor = 0.1,

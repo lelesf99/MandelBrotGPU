@@ -88,7 +88,6 @@ function handle_two_touches(event) {
 }
 // touchmove handler
 function process_touchmove(event) {
-	console.log("move!")
 	event.preventDefault();
 	if (mousedown || middlemousedown) {
 		deltaX = imMouseX - event.touches[0].clientX;
