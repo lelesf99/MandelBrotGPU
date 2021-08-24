@@ -118,7 +118,6 @@ function handle_one_touch(event) {
 	mousedown = true;
 }
 function handle_two_touches(event) {
-	
 	event.preventDefault();
 	touch1 = new Vector2(event.touches[0].clientX,event.touches[0].clientY);
 	touch2 = new Vector2(event.touches[1].clientX,event.touches[1].clientY);
@@ -154,7 +153,7 @@ function process_touchend(event) {
 	event.preventDefault();
 		middlemousedown = false;
 		mousedown = false;
-		picnh = false;
+		pinch = false;
 }
 
 window.addEventListener("resize", () => {
