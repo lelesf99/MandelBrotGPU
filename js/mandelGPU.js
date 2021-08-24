@@ -45,10 +45,10 @@ const render = gpu.createKernel(function(
     if (!diverge) {
     	this.color(0, 0, 0, 1);
     } else {
-    	let pix = itCount*10/maxIt;
-    	pix = Math.sqrt(pix);
-
-    	this.color(pix * red, pix * green, pix * blue, 1);
+    	let pix = (itCount*10/maxIt);
+		pix = Math.sqrt(pix);
+		pix = pix * (1 + (maxIt/ 2048));
+    	this.color(pix * (Math.sin(pix + (red * Math.PI*2))), pix * (Math.sin(pix + (green * Math.PI*2))), pix * (Math.sin(pix + (blue * Math.PI*2))), 1);
     }
 })
   .setOutput([width,height])
@@ -56,19 +56,19 @@ const render = gpu.createKernel(function(
 const canvas = render.canvas;
 
 document.querySelector(".container").appendChild(canvas);
+gl = canvas.getContext('webgl2');
 
 function animate() {
-	requestAnimationFrame(animate);
+	myReq = requestAnimationFrame(animate);
 
-	var a = map(juliaMouseX, 0, width, -1, 1);
-	var b = map(juliaMouseY, 0, height, -1, 1);
+	a = map(juliaMouseX, 0, width, -1, 1);
+	b = map(juliaMouseY, 0, height, -1, 1);
 
 	offsetX = map(mouseX, 0, width, -0.5, 0.5);
 	offsetY = map(mouseY, 0, height, -0.5, 0.5);
 
 	zoomCenter[0] = + offsetX;
   	zoomCenter[1] = - offsetY;
-
 	render(
 		mandel, 
 		zoomCenter, 
@@ -83,5 +83,4 @@ function animate() {
 		blue
 	);
 }
-
 animate();

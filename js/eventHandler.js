@@ -39,13 +39,13 @@ itSlider.addEventListener('input', () => {
 });
 
 rSlider.addEventListener('input', () => {
-	red = rSlider.value / 255;
+	red = rSlider.value / 100;
 });
 gSlider.addEventListener('input', () => {
-	green = gSlider.value / 255;
+	green = gSlider.value / 100;
 });
 bSlider.addEventListener('input', () => {
-	blue = bSlider.value / 255;
+	blue = bSlider.value / 100;
 });
 
 btnM.addEventListener('click', () => {
@@ -155,8 +155,3 @@ function process_touchend(event) {
 		mousedown = false;
 		pinch = false;
 }
-
-window.addEventListener("resize", () => {
-	canvas.setAttribute('width', window.innerWidth);
-	canvas.setAttribute('height', window.innerHeight);
-});
