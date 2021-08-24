@@ -76,14 +76,14 @@ canvas{
 .mySlider{
 	width: 100%;
 	height: 15px;
-	margin: 10px 0 10px 0;
 	-webkit-appearance: none;
 	color: #fff;
 	background-color: #585D7D;
 	border-radius: 10px;
 }
 .mySlider.rgb{
-  width: 18%;
+  width: calc(20% - 20px);
+  margin: 25px 10px 0 10px;
 }
 .mySlider::-webkit-slider-thumb {
 	-webkit-appearance: none;

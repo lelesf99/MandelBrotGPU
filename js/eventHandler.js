@@ -23,7 +23,6 @@ window.addEventListener('keydown', (event) => {
 });
 window.addEventListener('wheel', (event) => {
 	zoomSize += zoomSize * (event.deltaY/1000);
-	console.log(zoomSize)
 });
 hideShow.addEventListener('click', (event) => {
 	event.preventDefault();
@@ -123,8 +122,8 @@ function handle_two_touches(event) {
 	event.preventDefault();
 	touch1 = new Vector2(event.touches[0].clientX,event.touches[0].clientY);
 	touch2 = new Vector2(event.touches[1].clientX,event.touches[1].clientY);
+
 	pinchDist = zoomSize + (touch1.dist(touch2)/100);
-	console.log('two');
 	pinch = true;
 }
 // touchmove handler
@@ -141,7 +140,9 @@ function process_touchmove(event) {
 			juliaMouseY += deltaY * zoomSize;
 		} else if(pinch){
 			touch1.x = event.touches[0].clientX;
-			touch1.x = event.touches[1].clienty;
+			touch1.y = event.touches[0].clientY;
+			touch2.x = event.touches[1].clientX;
+			touch2.y = event.touches[1].clientY;
 			zoomSize = (pinchDist - (touch1.dist(touch2)/100));
 		} else {
 			mouseX += deltaX * zoomSize;
