@@ -7,20 +7,20 @@ var bSlider = document.querySelector("#bSlider");
 var btnM = document.querySelector("#selectM");
 var btnJ = document.querySelector("#selectJ");
 
-window.addEventListener('keydown', (event) => {
-	console.log(event);
-	if (event.code == 'ArrowRight') {
-		if(maxIt < 2048){
-			maxIt += 10;
-		}
-		itSlider.value = maxIt;
-	} else {
-		if(maxIt > 11){
-			maxIt -= 10;
-		}
-		itSlider.value = maxIt;
-	}
-});
+// window.addEventListener('keydown', (event) => {
+// 	console.log(event);
+// 	if (event.code == 'ArrowRight') {
+// 		if(maxIt < 2048){
+// 			maxIt += 10;
+// 		}
+// 		itSlider.value = maxIt;
+// 	} else {
+// 		if(maxIt > 11){
+// 			maxIt -= 10;
+// 		}
+// 		itSlider.value = maxIt;
+// 	}
+// });
 window.addEventListener('wheel', (event) => {
 	zoomSize += zoomSize * (event.deltaY/1000);
 });
